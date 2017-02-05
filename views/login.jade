@@ -1,0 +1,19 @@
+//
+   Created by jonesleborn on 17/1/27.
+extends layout
+block scripts
+    script(src='/js/login.js')
+block content
+    div.panel.panel-default
+        div.panel-heading
+            h3.panel-title 登录
+        div.panel-body
+            div.input-group
+                span.input-group-addon 用户名：
+                input(type='text', placeholder='your name').form-control
+            div.input-group
+                span.input-group-addon 密&nbsp;&nbsp;码：
+                input(type='password', placeholder='your name').form-control
+            button(type='button').btn.btn-lg.btn-default#login 登录
+
+
