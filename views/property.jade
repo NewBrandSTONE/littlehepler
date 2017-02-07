@@ -1,0 +1,34 @@
+//
+   Created by jonesleborn on 17/2/7.
+extends layout
+block scripts
+    script(src='/js/login.js')
+block content
+    div.panel.panel-default
+        div.panel-heading
+            h3.panel-title 登录
+        div.panel-body
+            div.input-group
+                span.input-group-addon 用户名：
+                input(type='text', placeholder='your name').form-control
+            div.input-group
+                span.input-group-addon 密&nbsp;&nbsp;码：
+                input(type='password', placeholder='your name').form-control
+            button(type='button').btn.btn-lg.btn-default#login 登录
+    button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+        | 开始演示模态框
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                        | ×
+                    h4#myModalLabel.modal-title
+                        | 模态框（Modal）标题
+                .modal-body
+                    | 在这里添加一些文本
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal')
+                        | 关闭
+                    button.btn.btn-primary(type='button')
+                        | 提交更改

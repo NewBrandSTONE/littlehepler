@@ -9,7 +9,7 @@ $(function () {
     // 初始化每日用款总数的事件
     // 资产包总表
     $('#property').click(function () {
-        $('#contentframe').attr("src", 'http://www.baidu.com');
+        $('#contentframe').attr("src", '/hello');
     });
     // 本金清单
     $('#principal').click(function () {
