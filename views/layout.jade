@@ -3,11 +3,20 @@ html
     meta(charset="utf-8")
     head
         title= title
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+        // 这个字体还有问题
+        link(rel='stylesheet', href="/font/css/font-awesome.min.css")
+        link(rel='stylesheet', href="/icons/ionicons.min.css")
         link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/dist/css/AdminLTE.min.css')
+        link(rel='stylesheet', href='/dist/css/skins/skin-blue.min.css')
         script(src='/jquery/jquery-3.1.1.min.js')
         script(src='/bootstrap/js/bootstrap.min.js')
+        script(src='/dist/js/app.min.js')
         block scripts
-    body
+    body.hold-transition.skin-blue.sidebar-mini(style='padding:0')
         block content
