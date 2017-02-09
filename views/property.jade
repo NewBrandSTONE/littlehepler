@@ -2,33 +2,98 @@
    Created by jonesleborn on 17/2/7.
 extends layout
 block scripts
-    script(src='/js/login.js')
+    script(src='/js/property.js')
+    script(src='/bootstrap-table/src/bootstrap-table.js')
+    link(rel='stylesheet', href='/bootstrap-table/src/bootstrap-table.css')
+    link(rel='stylesheet', href='/bootstrap-editable/css/bootstrap-editable.css')
 block content
     div.panel.panel-default
-        div.panel-heading
-            h3.panel-title 登录
-        div.panel-body
-            div.input-group
-                span.input-group-addon 用户名：
-                input(type='text', placeholder='your name').form-control
-            div.input-group
-                span.input-group-addon 密&nbsp;&nbsp;码：
-                input(type='password', placeholder='your name').form-control
-            button(type='button').btn.btn-lg.btn-default#login 登录
-    button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
-        | 开始演示模态框
+        div#toolbar
+            button#remove.btn.btn-danger(disabled='')
+                i.glyphicon 删除
+            button#add.btn.btn-success(data-toggle='modal', data-target='#myModal')
+                i.glyphicon 添加
+        table#data-grid
+            //thead
+                tr
+                    th(data-field='state', data-checkbox='true')
+                    th(data-field='name') Name
+                    th(data-field='stargazers_count') Stars
+                    th(data-field='forks_count') Forks
+                    th(data-field='description') Description
     #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-        .modal-dialog
+        .modal-dialog.modal-lg
             .modal-content
                 .modal-header
-                    button.close(type='button', data-dismiss='modal', aria-hidden='true')
-                        | ×
-                    h4#myModalLabel.modal-title
-                        | 模态框（Modal）标题
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#myModalLabel.modal-title 编辑
+                //.modal-body
                 .modal-body
-                    | 在这里添加一些文本
+                    form.form-horizontal(role='form')
+                        .form-group
+                            label.col-sm-3.control-label 借款人名称
+                            .col-sm-8
+                                input.form-control#borrowerName(type='text', placeholder='请输入借款人名称...')
+                        .form-group
+                            label.col-sm-3.control-label 发放贷款合同编号
+                            .col-sm-8
+                                input.form-control#loanCode(type='text', placeholder='请输贷款合同编号...')
+                        .form-group
+                            label.col-sm-3.control-label 币种
+                            .col-sm-8
+                                input.form-control#moneyType(type='text', placeholder='币种...')
+                        .form-group
+                            label.col-sm-3.control-label 贷款合同金额(万元)
+                            .col-sm-8
+                                input.form-control#loanMoney(type='number', placeholder='请输入贷款合同金额(万元)...')
+                        .form-group
+                            label.col-sm-3.control-label 本币贷款放款金额(万元)
+                            .col-sm-8
+                                input.form-control#giveMoney(type='number', placeholder='请输入本币贷款放款金额(万元)...')
+                        .form-group
+                            label.col-sm-3.control-label 本笔贷款未偿本金余额(万元)
+                            .col-sm-8
+                                input.form-control#giveSpecialMoney(type='number', placeholder='请输入本笔贷款未偿本金余额(万元)...')
+                        .form-group
+                            label.col-sm-3.control-label 本笔贷款现行利率
+                            .col-sm-8
+                                input.form-control#moneyRate(type='text', placeholder='请输入本笔贷款现行利率...')
+                        .form-group
+                            label.col-sm-3.control-label 利率调整方式
+                            .col-sm-8
+                                input.form-control#moneyRateAdajustMethod(type='text', placeholder='利率调整方式...')
+                        .form-group
+                            label.col-sm-3.control-label 本笔贷款发放时间
+                            .col-sm-8
+                                input.form-control#loadDate(type='text', placeholder='本笔贷款发放时间...')
+                        .form-group
+                            label.col-sm-3.control-label 本笔贷款到期日
+                            .col-sm-8
+                                input.form-control#loadEndDate(type='text', placeholder='本笔贷款到期日...')
+                        .form-group
+                            label.col-sm-3.control-label 本笔贷款偿还期限
+                            .col-sm-8
+                                input.form-control#loadPaybackDate(type='text', placeholder='本笔贷款偿还期限...')
+                        .form-group
+                            label.col-sm-3.control-label 付息方式
+                            .col-sm-8
+                                input.form-control#loadPaybackMethod(type='text', placeholder='付息方式...')
+                        .form-group
+                            label.col-sm-3.control-label 贷款种类(信用或保证)
+                            .col-sm-8
+                                input.form-control#loadType(type='text', placeholder='贷款种类(信用或保证)...')
+                        .form-group
+                            label.col-sm-3.control-label 保证人名称(如有)
+                            .col-sm-8
+                                input.form-control#loadVoucher(type='text', placeholder='保证人名称(如有)...')
+                        .form-group
+                            label.col-sm-3.control-label 担保合同编号
+                            .col-sm-8
+                                input.form-control#guaranteeContractCode(type='text', placeholder='担保合同编号(如有)...')
+                        .form-group
+                            label.col-sm-3.control-label 担保物评估价值(如有)
+                            .col-sm-8
+                                input.form-control#guaranteeStaffValue(type='text', placeholder='担保物评估价值(如有)...')
                 .modal-footer
-                    button.btn.btn-default(type='button', data-dismiss='modal')
-                        | 关闭
-                    button.btn.btn-primary(type='button')
-                        | 提交更改
+                    button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button') 提交更改

@@ -9,7 +9,7 @@ $(function () {
     // 初始化每日用款总数的事件
     // 资产包总表
     $('#property').click(function () {
-        $('#contentframe').attr("src", '/hello');
+        $('#contentframe').attr("src", '/property');
     });
     // 本金清单
     $('#principal').click(function () {
