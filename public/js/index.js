@@ -17,7 +17,7 @@ $(function () {
     });
     // 付息清单
     $('#interest').click(function () {
-
+        $('#contentframe').attr("src", '/payback');
     });
 
 });

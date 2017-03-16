@@ -10,9 +10,15 @@ block content
     div.panel.panel-default
         div#toolbar
             button#remove.btn.btn-danger(disabled='')
-                i.glyphicon 删除
+                i.glyphicon 删除2222
             button#add.btn.btn-success(data-toggle='modal', data-target='#myModal')
                 i.glyphicon 添加
+            button#addExcel.btn.btn-success(data-toggle='modal', data-target='#myExcelModal')
+                i.glyphicon 导入Excel
+            button#exportExcel.btn.btn-success
+                i.glyphicon 导出Excel
+            button#downloadExcel.btn.btn-success
+                i.glyphicon 下载Excel
         table#data-grid
             //thead
                 tr
@@ -30,6 +36,14 @@ block content
                 //.modal-body
                 .modal-body
                     form.form-horizontal(role='form')
+                        .form-group
+                            label.col-sm-3.control-label name
+                            .col-sm-8
+                                input.form-control#name(type='text', placeholder='name...')
+                        .form-group
+                            label.col-sm-3.control-label password
+                            .col-sm-8
+                                input.form-control#password(type='text', placeholder='password...')
                         .form-group
                             label.col-sm-3.control-label 借款人名称
                             .col-sm-8
@@ -61,7 +75,7 @@ block content
                         .form-group
                             label.col-sm-3.control-label 利率调整方式
                             .col-sm-8
-                                input.form-control#moneyRateAdajustMethod(type='text', placeholder='利率调整方式...')
+                                input.form-control#moneyRateAdjustMethod(type='text', placeholder='利率调整方式...')
                         .form-group
                             label.col-sm-3.control-label 本笔贷款发放时间
                             .col-sm-8
@@ -94,6 +108,46 @@ block content
                             label.col-sm-3.control-label 担保物评估价值(如有)
                             .col-sm-8
                                 input.form-control#guaranteeStaffValue(type='text', placeholder='担保物评估价值(如有)...')
+                        .form-group
+                            label.col-sm-3.control-label 办事处
+                            .col-sm-8
+                                input.form-control#handlePlace(type='text', placeholder='办事处...')
+                        .form-group
+                            label.col-sm-3.control-label 主办人
+                            .col-sm-8
+                                input.form-control#handlePeople(type='text', placeholder='主办人...')
+                        .form-group
+                            label.col-sm-3.control-label 起息日
+                            .col-sm-8
+                                input.form-control#interest(type='text', placeholder='起息日...')
+                        .form-group
+                            label.col-sm-3.control-label 上次结息日
+                            .col-sm-8
+                                input.form-control#lastPayInterestDate(type='text', placeholder='上次结息日...')
+                        .form-group
+                            label.col-sm-3.control-label 下次应该转系日期
+                            .col-sm-8
+                                input.form-control#nextPayInterestDate(type='text', placeholder='下次应该转系日期...')
+                        .form-group
+                            label.col-sm-3.control-label 利息金额
+                            .col-sm-8
+                                input.form-control#interestCount(type='text', placeholder='利息金额...')
                 .modal-footer
                     button.btn.btn-default(type='button', data-dismiss='modal') 关闭
-                    button.btn.btn-primary(type='button') 提交更改
+                    button.btn.btn-primary#submit(type='button') 提交更改
+                    button.btn.btn-primary#import(type='button') 导入excel
+    #myExcelModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#myExcelModalLabel.modal-title 文件上传
+                //.modal-body
+                .modal-body
+                    form.form-horizontal(role='form', enctype='multipart/form-data', method='post', action='/property/import')
+                        input#file(type='file', name='file')
+                        button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+                        button.btn.btn-primary#submitExcel(type='submit') 提交
+                //.modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+                    button.btn.btn-primary#submitExcel(type='submit') 提交

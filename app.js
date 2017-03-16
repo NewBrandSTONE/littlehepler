@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var property = require('./routes/property');
+var download = require('./routes/download');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/property', property);
+app.use('/download', download);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -35,6 +37,12 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
+
+// 处理表单以及上传文件
+app.use(require('express-formidable')({
+    uploadDir: path.join(__dirname, 'public/img'), // 上传目录
+    keepExtension: true// 保留后缀
+}));
 
 // error handler
 app.use(function (err, req, res, next) {
