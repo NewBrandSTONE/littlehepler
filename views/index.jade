@@ -67,6 +67,18 @@ block content
             // /.content
         // /.content-wrapper
         // Main Footer
+        #PayBackModule.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog.modal-lg
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                        h4#myExcelModalLabel.modal-title 文件上传
+                    //.modal-body
+                    .modal-body
+                        form.form-horizontal(role='form', enctype='multipart/form-data', method='post', action='/property/import')
+                            input#file(type='file', name='file')
+                            button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+                            button.btn.btn-primary#submitExcel(type='submit') 提交
         footer.main-footer
             // To the right
             .pull-right.hidden-xs

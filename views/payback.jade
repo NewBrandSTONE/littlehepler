@@ -2,7 +2,7 @@
    Created by jonesleborn on 17/2/7.
 extends layout
 block scripts
-    script(src='/js/property.js')
+    script(src='/js/payback.js')
     script(src='/bootstrap-table/src/bootstrap-table.js')
     link(rel='stylesheet', href='/bootstrap-table/src/bootstrap-table.css')
     link(rel='stylesheet', href='/bootstrap-editable/css/bootstrap-editable.css')
@@ -11,7 +11,7 @@ block content
         div#toolbar
             button#remove.btn.btn-danger(disabled='')
                 i.glyphicon 删除
-            button#add.btn.btn-success(data-toggle='modal', data-target='#myModal')
+            button#add.btn.btn-success
                 i.glyphicon 添加
             button#addExcel.btn.btn-success(data-toggle='modal', data-target='#myExcelModal')
                 i.glyphicon 导入Excel

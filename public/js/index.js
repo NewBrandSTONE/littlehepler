@@ -21,6 +21,12 @@ $(function () {
     });
 
 });
+
+function showPayBackModule() {
+    // 弹出窗口
+    $('#PayBackModule').modal('show');
+}
+
 // 监听浏览器大小变化
 $(window).resize(function () {
     if (document.body.clientHeight - cMineSize > cMinHeight) {
