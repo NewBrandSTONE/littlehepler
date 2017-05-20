@@ -1,32 +1,48 @@
 //
    Created by jonesleborn on 17/2/7.
-extends layout
-block scripts
+extends commonIndex.jade
+append addScript
     script(src='/js/payback.js')
     script(src='/bootstrap-table/src/bootstrap-table.js')
     link(rel='stylesheet', href='/bootstrap-table/src/bootstrap-table.css')
     link(rel='stylesheet', href='/bootstrap-editable/css/bootstrap-editable.css')
-block content
+block append mainContent
     div.panel.panel-default
         div#toolbar
-            button#remove.btn.btn-danger(disabled='')
+            button#remove.btn.btn-danger
                 i.glyphicon 删除
             button#add.btn.btn-success
                 i.glyphicon 添加
-            button#addExcel.btn.btn-success(data-toggle='modal', data-target='#myExcelModal')
+            button#view.btn.btn-success(data-toggle='modal', data-target='#viewDetailModal')
+                i.glyphicon 查看
+            button#addExcel.btn.btn-success(data-toggle='modal', data-target='#myModal')
                 i.glyphicon 导入Excel
             button#exportExcel.btn.btn-success
                 i.glyphicon 导出Excel
             button#downloadExcel.btn.btn-success
                 i.glyphicon 下载Excel
-        table#data-grid
-            //thead
-                tr
-                    th(data-field='state', data-checkbox='true')
-                    th(data-field='name') Name
-                    th(data-field='stargazers_count') Stars
-                    th(data-field='forks_count') Forks
-                    th(data-field='description') Description
+        //table#data-grid
+        table#data-grid(data-toolbar="#toolbar"
+            data-search="true"
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-show-export="true"
+            data-minimum-count-columns="2"
+            data-show-pagination-switch="true"
+            data-pagination="true"
+            data-id-field="id"
+            data-page-list="[10, 25, 50, 100, ALL]"
+            data-show-footer="false"
+            data-url="/payback/data"
+            data-response-handler="responseHandler")
+    #viewDetailModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='viewDetailModalTitle', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#viewDetailModalTitle.modal-title 详情
+                .modal-body
     #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
         .modal-dialog.modal-lg
             .modal-content
@@ -136,18 +152,3 @@ block content
                     button.btn.btn-default(type='button', data-dismiss='modal') 关闭
                     button.btn.btn-primary#submit(type='button') 提交更改
                     button.btn.btn-primary#import(type='button') 导入excel
-    #myExcelModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-        .modal-dialog.modal-lg
-            .modal-content
-                .modal-header
-                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                    h4#myExcelModalLabel.modal-title 文件上传
-                //.modal-body
-                .modal-body
-                    form.form-horizontal(role='form', enctype='multipart/form-data', method='post', action='/property/import')
-                        input#file(type='file', name='file')
-                        button.btn.btn-default(type='button', data-dismiss='modal') 关闭
-                        button.btn.btn-primary#submitExcel(type='submit') 提交
-                //.modal-footer
-                    button.btn.btn-default(type='button', data-dismiss='modal') 关闭
-                    button.btn.btn-primary#submitExcel(type='submit') 提交

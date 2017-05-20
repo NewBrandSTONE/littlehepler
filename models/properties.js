@@ -19,5 +19,15 @@ module.exports = {
             .addCreatedAt()
             .sort({_id: -1})
             .exec();
+    },
+    getPageData: function (currentPage, pageSize) {
+        console.log(currentPage + "/" + pageSize);
+        return Property
+            .find({})
+            .skip(Number(currentPage))
+            .limit(Number(pageSize))
+            .exec(function (err, datas) {
+                console.log(datas.length);
+            });
     }
 };

@@ -1,0 +1,160 @@
+//
+   Created by jonesleborn on 2017/4/23. 作为通用的主页
+extends layout
+
+block content
+    .wrapper
+        // Main Header
+        header.main-header
+            // Logo
+            a.logo(href='#')
+                // mini logo for sidebar mini 50x50 pixels
+                span.logo-mini
+                    b A
+                    | LT
+                // logo for regular state and mobile devices
+                span.logo-lg
+                    b FF
+                    | Helper
+            // Header Navbar
+            nav.navbar.navbar-static-top(role='navigation')
+                // Sidebar toggle button
+                a.sidebar-toggle(href='#', data-toggle='offcanvas', role='button')
+                    span.sr-only Toggle navigation
+        // Left side column. contains the logo and sidebar
+        aside.main-sidebar
+            // sidebar: style can be found in sidebar.less
+            section.sidebar
+                ul.sidebar-menu
+                    li.header
+                    // Optionally, you can add icons to the links
+                    li.treeview.active
+                        a(href='#')
+                            i.fa.fa-calendar
+                            span 每日用款
+                            span.pull-right-container
+                                i.fa.fa-angle-left.pull-right
+                        ul.treeview-menu
+                            li#property
+                                a(href='#')
+                                    i.fa.fa-pie-chart
+                                    span 资产包总表
+                            li#principal
+                                a(href='#')
+                                    i.fa.fa-map
+                                    span 本金清单
+                            li#interest
+                                a(href='#')
+                                    i.fa.fa-money
+                                    span 还款计划
+                // /.sidebar-menu
+            // /.sidebar
+        // Content Wrapper. Contains page content
+        .content-wrapper
+            // Content Header (Page header)
+            section.content-header
+                h1#contentTitle
+                    small
+                ol.breadcrumb
+                    li
+                        a(href='#')
+                            i.fa.fa-dashboard
+                            |  Level
+                    li.active#navTag Here
+            // Main content
+            block mainContent
+            //section#content.content
+                //iframe#contentframe(width='100%' height='100%' src='/login' frameborder='0' allowtransparency='true')
+                // Your Page Content Here
+            // /.content
+        // /.content-wrapper
+        // Main Footer
+        #PayBackModule.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog.modal-lg
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                        h4#myExcelModalLabel.modal-title 文件上传
+                    //.modal-body
+                    .modal-body
+                        form.form-horizontal(role='form', enctype='multipart/form-data', method='post', action='/property/import')
+                            input#file(type='file', name='file')
+                            button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+                            button.btn.btn-primary#submitExcel(type='submit') 提交
+        footer.main-footer
+            // To the right
+            .pull-right.hidden-xs
+            // Default to the left
+            strong
+                | Copyright © 2016
+                a(href='#') FFHelper
+                | .
+            |  All rights reserved.
+        // Control Sidebar
+        aside.control-sidebar.control-sidebar-dark
+            // Create the tabs
+            ul.nav.nav-tabs.nav-justified.control-sidebar-tabs
+                li.active
+                    a(href='#control-sidebar-home-tab', data-toggle='tab')
+                        i.fa.fa-home
+                li
+                    a(href='#control-sidebar-settings-tab', data-toggle='tab')
+                        i.fa.fa-gears
+            // Tab panes
+            .tab-content
+                // Home tab content
+                #control-sidebar-home-tab.tab-pane.active
+                    h3.control-sidebar-heading Recent Activity
+                    ul.control-sidebar-menu
+                        li
+                            a(href='javascript:;')
+                                i.menu-icon.fa.fa-birthday-cake.bg-red
+                                .menu-info
+                                    h4.control-sidebar-subheading Langdon's Birthday
+                                    p Will be 23 on April 24th
+                    // /.control-sidebar-menu
+                    h3.control-sidebar-heading Tasks Progress
+                    ul.control-sidebar-menu
+                        li
+                            a(href='javascript:;')
+                                h4.control-sidebar-subheading
+                                    | Custom Template Design
+                                    span.pull-right-container
+                                        span.label.label-danger.pull-right 70%
+                                .progress.progress-xxs
+                                    .progress-bar.progress-bar-danger(style='width: 70%')
+                    // /.control-sidebar-menu
+                // /.tab-pane
+                // Stats tab content
+                #control-sidebar-stats-tab.tab-pane Stats Tab Content
+                // /.tab-pane
+                // Settings tab content
+                #control-sidebar-settings-tab.tab-pane
+                    form(method='post')
+                        h3.control-sidebar-heading General Settings
+                        .form-group
+                            label.control-sidebar-subheading
+                                | Report panel usage
+                                input.pull-right(type='checkbox', checked='')
+                            p
+                                | Some information about this general settings option
+                        // /.form-group
+                // /.tab-pane
+        // /.control-sidebar
+        //
+          Add the sidebar's background. This div must be placed
+          immediately after the control sidebar
+        .control-sidebar-bg
+    // ./wrapper
+    // REQUIRED JS SCRIPTS
+    // jQuery 2.2.3
+    script(src='/jquery/jquery-3.1.1.min.js')
+    // Bootstrap 3.3.6
+    script(src='/bootstrap/js/bootstrap.min.js')
+    // AdminLTE App
+    script(src='/dist/js/app.min.js')
+    script(src='/js/index.js')
+    block addScript
+
+
+

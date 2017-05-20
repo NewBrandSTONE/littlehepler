@@ -15,9 +15,10 @@ $(function () {
     $('#principal').click(function () {
 
     });
-    // 付息清单
+    // 还款计划
     $('#interest').click(function () {
-        $('#contentframe').attr("src", '/payback');
+        //$('#contentframe').attr("src", '/payback');
+        window.location.href = "/payback";
     });
 
 });
