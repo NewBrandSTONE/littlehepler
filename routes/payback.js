@@ -40,4 +40,21 @@ router.get('/data', function (req, res, next) {
     });
 });
 
+// 保存表单内容
+router.post('/edit', function (req, res) {
+    console.log(req.body.borrowerName);
+    console.log(req.body.loanCode);
+
+    var user = {
+        name: req.body.borrowerName,
+        password: req.body.loanCode
+    };
+    console.log(user);
+    /*
+    UserModel.create(user).catch(function (e) {
+        console.log(e);
+    });
+    */
+    res.redirect('/payback');
+});
 module.exports = router;
