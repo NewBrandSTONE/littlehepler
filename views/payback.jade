@@ -2,10 +2,12 @@
    Created by jonesleborn on 17/2/7.
 extends commonIndex.jade
 append addScript
-    script(src='/js/payback.js')
-    script(src='/bootstrap-table/src/bootstrap-table.js')
     link(rel='stylesheet', href='/bootstrap-table/src/bootstrap-table.css')
     link(rel='stylesheet', href='/bootstrap-editable/css/bootstrap-editable.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-datetimepicker.min.css')
+    script(src='/bootstrap/js/bootstrap-datetimepicker.min.js')
+    script(src='/bootstrap-table/src/bootstrap-table.js')
+    script(src='/js/payback.js')
 block append mainContent
     div.panel.panel-default
         div#toolbar
@@ -85,9 +87,15 @@ block append mainContent
                             .col-sm-8
                                 input.form-control#moneyRateAdjustMethod(type='text', placeholder='利率调整方式...')
                         .form-group
-                            label.col-sm-3.control-label 本笔贷款发放时间
+                            label.col-sm-3.control-label 本笔贷款发放时间222
                             .col-sm-8
-                                input.form-control#loadDate(type='text', placeholder='本笔贷款发放时间...')
+                                //input.form-control#loadDate(type='text', placeholder='本笔贷款发放时间...')
+                                .input-group.date.form_date.col-md-5(data-date='', data-date-format='dd MM yyyy', data-link-field='dtp_input2', data-link-format='yyyy-mm-dd')
+                                    input.form-control(size='16', type='text', value='', readonly='')
+                                    span.input-group-addon
+                                        span.glyphicon.glyphicon-remove
+                                    span.input-group-addon
+                                        span.glyphicon.glyphicon-calendar
                         .form-group
                             label.col-sm-3.control-label 本笔贷款到期日
                             .col-sm-8
